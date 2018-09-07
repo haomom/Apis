@@ -1,0 +1,12 @@
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\EntityFramework.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\EntityFramework.xml
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\obj\Debug\Mizuho.London.FinanceLedgerPosting.Data.csprojAssemblyReference.cache
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\obj\Debug\Mizuho.London.FinanceLedgerPosting.Data.csproj.CoreCompileInputs.cache
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\obj\Debug\Mizuho.London.FinanceLedgerPosting.Data.csproj.CopyComplete
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\Mizuho.London.FinanceLedgerPosting.Data.dll.config
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\Mizuho.London.FinanceLedgerPosting.Data.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\bin\Debug\Mizuho.London.FinanceLedgerPosting.Data.pdb
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\obj\Debug\Mizuho.London.FinanceLedgerPosting.Data.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Models\obj\Debug\Mizuho.London.FinanceLedgerPosting.Data.pdb
