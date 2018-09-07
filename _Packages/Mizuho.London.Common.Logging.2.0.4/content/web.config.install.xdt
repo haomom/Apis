@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <configSections xdt:Transform="InsertIfMissing">
+  </configSections>
+
+  <configSections>
+    <section name="MizLogConfig" type="Mizuho.London.Common.Logging.MizLogConfigHandler, Mizuho.London.Common.Logging" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    <section name="MizLogConfig" type="Mizuho.London.Common.Logging.MizLogConfigHandler, Mizuho.London.Common.Logging" xdt:Transform="Insert" />
+  </configSections>
+  
+  <MizLogConfig xdt:Transform="InsertIfMissing">
+    <Udp Enabled="true" RemoteIpAddress="127.0.0.1" RemotePort="7071" />
+    <EventLog Enabled="false" ApplicationName="MizApp.YourApplicationName" />
+    <Root LoggingLevel="ALL" LoggerName="MizApp.YourApplicationName" HidePassword="true"/>
+  </MizLogConfig>
+
+</configuration>

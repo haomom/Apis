@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <configSections>
+    <section name="MizLogConfig" type="Mizuho.London.Common.Logging.MizLogConfigHandler, Mizuho.London.Common.Logging" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+	</configSections>
+	
+	<MizLogConfig xdt:Transform="Remove" />
+
+</configuration>
