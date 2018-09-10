@@ -57,12 +57,6 @@
             <param name="id">Suspense account Id</param>
             <returns>Suspense Account Object</returns>
         </member>
-        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController.CreateSuspenseAccount(System.String)">
-            <summary>
-            Post suspense account data
-            </summary>
-            <param name="value"></param>
-        </member>
         <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController.GetPagedList(System.String,System.String,System.Int32,System.Int32)">
             <summary>
             This returns paged list of suspense accounts

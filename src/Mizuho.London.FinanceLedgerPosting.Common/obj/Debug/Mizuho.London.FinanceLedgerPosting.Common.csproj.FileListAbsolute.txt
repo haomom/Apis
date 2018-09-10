@@ -22,4 +22,3 @@ C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\M
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Debug\Mizuho.London.FinanceLedgerPosting.Common.csproj.CopyComplete
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Debug\Mizuho.London.FinanceLedgerPosting.Common.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Debug\Mizuho.London.FinanceLedgerPosting.Common.pdb
-C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Debug\Mizuho.London.FinanceLedgerPosting.Common.csprojAssemblyReference.cache

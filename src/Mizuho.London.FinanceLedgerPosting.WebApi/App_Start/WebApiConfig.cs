@@ -35,7 +35,7 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             // Ignore Items in circular reference
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
-            //config.Filters.Add(new AppExceptionFilterAttribute());
+            config.Filters.Add(new AppExceptionFilterAttribute());
         }
     }
 }

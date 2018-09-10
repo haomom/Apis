@@ -37,35 +37,13 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
         // GET: api/SuspenceAccount/5
         public HttpResponseMessage Get(int id)
         {
-            try
-            {
-                var suspenseAccount = _suspenseAccountRepository.GetById(id);
-                if (suspenseAccount != null)
-                {
-                    return Request.CreateResponse<SuspenseAccount>(HttpStatusCode.OK, suspenseAccount);
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Suspense Account not found");
-                }
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
-        }
+            var suspenseAccount = _suspenseAccountRepository.GetById(id);
 
-        // POST: api/SuspenceAccount
-        /// <summary>
-        /// Post suspense account data
-        /// </summary>
-        /// <param name="value"></param>
-        [HttpPost]
-        [MizuhoAuthorize(Roles=Common.Constants.UserRoles.AnyRoleExceptReadOnly)]
-        public void CreateSuspenseAccount([FromBody]string value)
-        {
+            return suspenseAccount != null
+                ? Request.CreateResponse<SuspenseAccount>(HttpStatusCode.OK, suspenseAccount)
+                : Request.CreateErrorResponse(HttpStatusCode.NotFound, "Suspense Account not found");
         }
-
+        
         /// <summary>
         /// This returns paged list of suspense accounts
         /// </summary>
@@ -74,11 +52,10 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
         /// <param name="pageNumber">page number. by default it is set to 1</param>
         /// <param name="pageSize">page size. by default it is set to 20</param>
         /// <returns>a paged list of suspense account objects</returns>
-        public IPagedResult<SuspenseAccount> GetPagedList(string branch = null, string currency = null, int pageNumber = 1, int pageSize = 20)
+        public HttpResponseMessage GetPagedList(string branch = null, string currency = null, int pageNumber = 1,
+            int pageSize = 20)
         {
-            var query = _suspenseAccountRepository
-                .Query()
-                .OrderBy(x => x.OrderBy(xx => xx.Branch).ThenBy(xx => xx.Currency));
+            var query = _suspenseAccountRepository.Query();
 
             Expression<Func<SuspenseAccount, bool>> filterExpressionTree = null;
 
@@ -97,7 +74,9 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
                 query.Filter(filterExpressionTree);
             }
 
-            return query.GetPage(pageNumber, pageSize);
+            query.OrderBy(x => x.OrderBy(xx => xx.Branch).ThenBy(xx => xx.Currency));
+
+            return Request.CreateResponse(HttpStatusCode.OK, query.GetPage(pageNumber, pageSize));
         }
     }
 }

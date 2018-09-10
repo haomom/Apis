@@ -11,9 +11,9 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Filter
     {
         private IMizLog _logService;
 
-        public AppExceptionFilterAttribute(IMizLog logger)
+        public AppExceptionFilterAttribute()
         {
-            _logService = logger;
+            _logService = new MizLog();
         }
 
         public override void OnException(HttpActionExecutedContext actionExecutedContext)

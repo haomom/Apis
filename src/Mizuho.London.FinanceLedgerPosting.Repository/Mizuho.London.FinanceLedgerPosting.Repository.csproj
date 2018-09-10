@@ -48,6 +48,9 @@
     <Reference Include="LinqKit, Version=1.1.9.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\LinqKit.1.1.9.0\lib\net45\LinqKit.dll</HintPath>
     </Reference>
+    <Reference Include="Mizuho.London.Common.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\Mizuho.London.Common.Interfaces.1.1.4\lib\net45\Mizuho.London.Common.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -59,14 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\FinanceLedgerPostingDbContext.cs" />
     <Compile Include="Infrastructure\BaseRepository.cs" />
+    <Compile Include="Infrastructure\FinanceLedgerPostingDbContext.cs" />
+    <Compile Include="Infrastructure\PagedResult.cs" />
+    <Compile Include="Infrastructure\RepositoryQuery.cs" />
     <Compile Include="Interfaces\IPagedResult.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRepositoryQuery.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\PagedResult.cs" />
-    <Compile Include="Infrastructure\RepositoryQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\SuspenseAccountRepository.cs" />
   </ItemGroup>
@@ -77,10 +80,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mizuho.London.FinanceLedgerPosting.Common\Mizuho.London.FinanceLedgerPosting.Common.csproj">
-      <Project>{bdafe549-c752-4a83-9f00-f295e5814855}</Project>
-      <Name>Mizuho.London.FinanceLedgerPosting.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mizuho.London.FinanceLedgerPosting.Models\Mizuho.London.FinanceLedgerPosting.Data.csproj">
       <Project>{3B821A5B-32E5-4FCB-BD10-2840616DCE48}</Project>
       <Name>Mizuho.London.FinanceLedgerPosting.Data</Name>

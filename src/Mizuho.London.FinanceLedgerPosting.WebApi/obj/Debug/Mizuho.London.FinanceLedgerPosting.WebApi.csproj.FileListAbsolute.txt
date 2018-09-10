@@ -194,3 +194,11 @@ C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\M
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\Mizuho.London.FinanceLedgerPosting.Data.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\Mizuho.London.FinanceLedgerPosting.Data.pdb
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\Mizuho.London.FinanceLedgerPosting.Data.dll.config
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\Microsoft.Win32.Primitives.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Net.Http.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Security.Cryptography.Algorithms.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Security.Cryptography.Encoding.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Security.Cryptography.Primitives.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.WebApi\bin\System.Diagnostics.DiagnosticSource.xml

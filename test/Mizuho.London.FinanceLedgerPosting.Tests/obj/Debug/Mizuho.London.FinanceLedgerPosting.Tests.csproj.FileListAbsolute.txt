@@ -43,7 +43,6 @@ C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\Unity.Container.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\Mizuho.London.Common.Interfaces.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\Mizuho.London.Common.Logging.dll
-C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\Mizuho.London.Common.RoleProviders.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\System.Web.Http.WebHost.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\Unity.WebApi.dll
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\System.Net.Http.Formatting.dll
@@ -69,3 +68,5 @@ C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\System.Web.WebPages.xml
 C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\test\Mizuho.London.FinanceLedgerPosting.Tests\bin\Debug\EntityFramework.SqlServer.xml

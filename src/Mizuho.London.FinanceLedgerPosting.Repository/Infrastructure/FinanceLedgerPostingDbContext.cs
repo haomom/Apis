@@ -9,7 +9,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
     {
         #region DbSet
        
-        public virtual DbSet<SuspenseAccount> SuspenseAccounts { get; set; }
+        public virtual IDbSet<SuspenseAccount> SuspenseAccounts { get; set; }
        
         #endregion
 
