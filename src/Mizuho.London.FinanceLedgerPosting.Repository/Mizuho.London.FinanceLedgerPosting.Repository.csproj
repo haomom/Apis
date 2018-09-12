@@ -80,12 +80,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mizuho.London.FinanceLedgerPosting.Models\Mizuho.London.FinanceLedgerPosting.Data.csproj">
-      <Project>{3B821A5B-32E5-4FCB-BD10-2840616DCE48}</Project>
+    <ProjectReference Include="..\Mizuho.London.FinanceLedgerPosting.Data\Mizuho.London.FinanceLedgerPosting.Data.csproj">
+      <Project>{3b821a5b-32e5-4fcb-bd10-2840616dce48}</Project>
       <Name>Mizuho.London.FinanceLedgerPosting.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

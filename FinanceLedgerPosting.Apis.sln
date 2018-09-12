@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedger
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedgerPosting.Repository", "src\Mizuho.London.FinanceLedgerPosting.Repository\Mizuho.London.FinanceLedgerPosting.Repository.csproj", "{41E79C47-57F2-4B91-892E-30F23B8DA05F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedgerPosting.Data", "src\Mizuho.London.FinanceLedgerPosting.Models\Mizuho.London.FinanceLedgerPosting.Data.csproj", "{3B821A5B-32E5-4FCB-BD10-2840616DCE48}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5CB70D9A-39CE-4746-9E9A-6693168A8D71}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedgerPosting.Tests", "test\Mizuho.London.FinanceLedgerPosting.Tests\Mizuho.London.FinanceLedgerPosting.Tests.csproj", "{34D39431-FFD3-4DDB-A9B8-560CCE08CAA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedgerPosting.Common", "src\Mizuho.London.FinanceLedgerPosting.Common\Mizuho.London.FinanceLedgerPosting.Common.csproj", "{BDAFE549-C752-4A83-9F00-F295E5814855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mizuho.London.FinanceLedgerPosting.Data", "src\Mizuho.London.FinanceLedgerPosting.Data\Mizuho.London.FinanceLedgerPosting.Data.csproj", "{3B821A5B-32E5-4FCB-BD10-2840616DCE48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{41E79C47-57F2-4B91-892E-30F23B8DA05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E79C47-57F2-4B91-892E-30F23B8DA05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E79C47-57F2-4B91-892E-30F23B8DA05F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34D39431-FFD3-4DDB-A9B8-560CCE08CAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34D39431-FFD3-4DDB-A9B8-560CCE08CAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34D39431-FFD3-4DDB-A9B8-560CCE08CAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{BDAFE549-C752-4A83-9F00-F295E5814855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDAFE549-C752-4A83-9F00-F295E5814855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDAFE549-C752-4A83-9F00-F295E5814855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B821A5B-32E5-4FCB-BD10-2840616DCE48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

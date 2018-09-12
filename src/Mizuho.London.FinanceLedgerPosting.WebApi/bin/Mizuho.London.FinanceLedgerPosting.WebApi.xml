@@ -4,16 +4,6 @@
         <name>Mizuho.London.FinanceLedgerPosting.WebApi</name>
     </assembly>
     <members>
-        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.UnityConfig">
-            <summary>
-            This class is for mapping all components for IOC
-            </summary>
-        </member>
-        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.UnityConfig.RegisterComponents">
-            <summary>
-            Register all components for IOC
-            </summary>
-        </member>
         <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants">
             <summary>
             This is the class to store all common objects
