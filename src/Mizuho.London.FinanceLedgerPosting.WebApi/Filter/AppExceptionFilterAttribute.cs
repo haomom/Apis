@@ -21,7 +21,7 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Filter
             Exception ex = actionExecutedContext.Exception;
             HttpRequestMessage request = actionExecutedContext.Request;
 
-            _logService.Error(ex.Message, ex);
+            _logService.Error(ex.InnerException == null ? ex.Message : ex.InnerException.Message, ex);
 
             HttpError httpError = new HttpError { Message = ex.Message };
             actionExecutedContext.Response = request.CreateErrorResponse(HttpStatusCode.InternalServerError, httpError);

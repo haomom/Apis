@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
 
 namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
 {
     public abstract class BaseRepository<T> where T : class
     {
-        private readonly IDbSet<T> _dbSet;
+        private readonly DbSet<T> _dbSet;
 
         protected IUnitOfWork UnitOfWork { get; set; }
 
@@ -21,25 +22,29 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
             _dbSet = DataContext.Set<T>();
         }
 
-        public void Delete(T entity)
+        public void Remove(T entity)
         {
             _dbSet.Remove(entity);
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
-            _dbSet.Add(entity);
+            return _dbSet.Add(entity);
         }
 
         public void Update(T entity)
         {
             _dbSet.Attach(entity);
+        }
+
+        public void SetEntityStateModified(T entity)
+        {
             DataContext.Entry(entity).State = EntityState.Modified;
         }
 
-        public T GetById(object id)
+        public async Task<T> GetById(object id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
         
         public IQueryable<T> GetAll()
@@ -53,7 +58,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
             return helper;
         }
 
-        internal IEnumerable<T> Get(Expression<Func<T, bool>> filter = null,
+        internal async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             List<Expression<Func<T, object>>> includes = null,
             int pageNumber = 0,
@@ -80,7 +85,23 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
                     .Take(pageSize);
             }
         
-            return query.ToList();
+            return await query.ToListAsync();
+        }
+
+        internal async Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            List<Expression<Func<T, object>>> includes = null)
+        {
+            IQueryable<T> query = _dbSet;
+
+            includes?.ForEach(i => query.Include(i));
+            
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+
+            return await query.FirstOrDefaultAsync(filter);
         }
     }
 }

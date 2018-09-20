@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using Mizuho.London.FinanceLedgerPosting.WebApi.Filter;
 
 namespace Mizuho.London.FinanceLedgerPosting.WebApi
@@ -10,21 +11,11 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             // Web API configuration and services
 
             // Web Api enable CORS
-            //config.EnableCors();
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-
-            #region Suspense Account
-
-            config.Routes.MapHttpRoute(
-                name: "CreateSuspenseAccount",
-                routeTemplate: "api/suspenseaccount/createsuspenseaccount",
-                defaults: new { controller = "SuspenseAccount", action = "CreateSuspenseAccount" }
-            );
-
-            #endregion
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -35,6 +26,7 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             // Ignore Items in circular reference
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
+            config.Filters.Add(new AuthorizeAttribute());
             config.Filters.Add(new AppExceptionFilterAttribute());
         }
     }

@@ -1,4 +1,5 @@
-﻿using Mizuho.London.FinanceLedgerPosting.Data.Entities;
+﻿using System.Threading.Tasks;
+using Mizuho.London.FinanceLedgerPosting.Data.Entities;
 using Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
 
@@ -10,14 +11,15 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Repositories
         {
         }
 
-        public ISuspenseAccount FindSuspenseAccountByBranchCurrency(string branch, string currency)
+        public async Task<SuspenseAccount> FindSuspenseAccountByBranchCurrency(string branch, string currency)
         {
-            return Query().Filter(x => x.Branch == branch && x.Currency == currency).GetFirstOrDefault();
+            var query = Query().Filter(x => x.Branch == branch && x.Currency == currency);
+            return await query.GetFirstOrDefault();
         }
     }
 
     public interface ISuspenseAccountRepository : IRepository<SuspenseAccount>
     {
-        ISuspenseAccount FindSuspenseAccountByBranchCurrency(string branchNo, string currency);
+        Task<SuspenseAccount> FindSuspenseAccountByBranchCurrency(string branch, string currency);
     }
 }

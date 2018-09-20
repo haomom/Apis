@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
 
 namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
@@ -40,36 +41,38 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
             return this;
         }
 
-        public IPagedResult<T> GetPage(int pageNumber, int pageSize)
+        public async Task<IPagedResult<T>> GetPage(int pageNumber, int pageSize)
         {
             if (pageNumber < 1 || pageSize < 1)
                 return new PagedResult<T>(Enumerable.Empty<T>(), 0, pageNumber, pageSize);
 
-            var list = _repositoryBase.Get(
+            var list = await _repositoryBase.Get(
                 filter: _filter,
                 orderBy: _orderByQuerable,
                 includes: _includeProperties,
                 pageNumber: pageNumber,
                 pageSize: pageSize);
 
-            var total = _repositoryBase.Get(_filter).Count();
+            var totalList = await _repositoryBase.Get(_filter);
+            var total = totalList.Count();
             
             return new PagedResult<T>(list, total, pageNumber, pageSize);
         }
 
-        public int GetCount()
+        public async Task<int> GetCount()
         {
-            return _repositoryBase.Get(_filter).Count();
+            var totalList = await _repositoryBase.Get(_filter);
+            return totalList.Count();
         }
 
-        public IEnumerable<T> Get()
+        public async Task<IEnumerable<T>> Get()
         {
-            return _repositoryBase.Get(_filter, _orderByQuerable, _includeProperties);
+            return await _repositoryBase.Get(_filter, _orderByQuerable, _includeProperties);
         }
 
-        public T GetFirstOrDefault()
+        public async Task<T> GetFirstOrDefault()
         {
-            return _repositoryBase.Get(_filter, _orderByQuerable, _includeProperties).FirstOrDefault();
+            return await _repositoryBase.GetFirstOrDefault(_filter, _orderByQuerable, _includeProperties);
         }
     }
 }

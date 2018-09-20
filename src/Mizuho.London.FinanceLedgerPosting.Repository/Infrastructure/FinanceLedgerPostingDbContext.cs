@@ -22,6 +22,11 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
             base.SaveChanges();
         }
 
+        void IUnitOfWork.CommitAsync()
+        {
+            base.SaveChangesAsync();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new SuspenseAccountMapping());

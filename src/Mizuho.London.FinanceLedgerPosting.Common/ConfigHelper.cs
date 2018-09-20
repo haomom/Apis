@@ -3,7 +3,7 @@ using System.Configuration;
 using Mizuho.London.Common.Interfaces.Configuration;
 
 namespace Mizuho.London.FinanceLedgerPosting.Common
-{
+{/*
     public class ConfigHelper : IConfigHelper
     {
         /// <summary>   
@@ -36,5 +36,5 @@ namespace Mizuho.London.FinanceLedgerPosting.Common
 
             return config;
         }
-    }
+    }*/
 }

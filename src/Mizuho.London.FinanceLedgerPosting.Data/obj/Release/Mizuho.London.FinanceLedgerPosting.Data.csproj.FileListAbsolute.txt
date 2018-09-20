@@ -1,0 +1,11 @@
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\Mizuho.London.FinanceLedgerPosting.Data.dll.config
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\Mizuho.London.FinanceLedgerPosting.Data.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\Mizuho.London.FinanceLedgerPosting.Data.pdb
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\EntityFramework.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\EntityFramework.xml
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\obj\Release\Mizuho.London.FinanceLedgerPosting.Data.csproj.CoreCompileInputs.cache
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\obj\Release\Mizuho.London.FinanceLedgerPosting.Data.csproj.CopyComplete
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\obj\Release\Mizuho.London.FinanceLedgerPosting.Data.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Data\obj\Release\Mizuho.London.FinanceLedgerPosting.Data.pdb

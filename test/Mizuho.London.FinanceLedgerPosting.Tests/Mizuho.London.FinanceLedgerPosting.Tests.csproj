@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\_Packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\..\_Packages\NUnit.3.10.1\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -56,21 +55,25 @@
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Mizuho.London.Common.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\_Packages\Mizuho.London.Common.Logging.2.0.4\lib\net45\Mizuho.London.Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=4.7.145.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\Moq.4.7.145\lib\net45\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\_Packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\_Packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\_Packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\_Packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
@@ -96,15 +99,21 @@
   <ItemGroup>
     <Compile Include="Config\MockDbContext.cs" />
     <Compile Include="Controller\SuspenseAccountControllerTests.cs" />
+    <Compile Include="Controller\UserCredentialControllerTests.cs" />
+    <Compile Include="Helper\MockDBForAsyncQueriesHelper.cs" />
     <Compile Include="Helper\MockDBHelper.cs" />
     <Compile Include="Helper\ObjectComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\SuspenseAccountRepositoryTests.cs" />
+    <Compile Include="Services\UserCredentialServicesTests.cs" />
     <Compile Include="Stubs\SuspenceAccountsStubs.cs" />
+    <Compile Include="Stubs\UserCredentialsStubs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Mizuho.London.FinanceLedgerPosting.Data\Mizuho.London.FinanceLedgerPosting.Data.csproj">
@@ -115,17 +124,18 @@
       <Project>{41E79C47-57F2-4B91-892E-30F23B8DA05F}</Project>
       <Name>Mizuho.London.FinanceLedgerPosting.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Mizuho.London.FinanceLedgerPosting.Services\Mizuho.London.FinanceLedgerPosting.Services.csproj">
+      <Project>{5de28dad-8816-462a-abf6-6111f7d6f2b2}</Project>
+      <Name>Mizuho.London.FinanceLedgerPosting.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Mizuho.London.FinanceLedgerPosting.WebApi\Mizuho.London.FinanceLedgerPosting.WebApi.csproj">
       <Project>{dd8054a4-bf0d-41c3-85d5-0620ab0e7cb8}</Project>
       <Name>Mizuho.London.FinanceLedgerPosting.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\_Packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\_Packages\NUnit.3.10.1\build\NUnit.props'))" />
-  </Target>
 </Project>

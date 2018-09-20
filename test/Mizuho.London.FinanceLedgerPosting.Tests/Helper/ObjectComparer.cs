@@ -34,13 +34,30 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Helper
             }
         }
 
+        public static void ListOfPropertiesValuesAreEquals(IList actualList, IList expectedList)
+        {
+            if (actualList.Count != expectedList.Count)
+            {
+                Assert.Fail($"Expected IList containing {expectedList.Count} elements but was IList containing {actualList.Count} elements");
+            }
+            else
+            {
+                for (int i = 0; i < expectedList.Count; i++)
+                {
+                    PropertyValuesAreEquals(actualList[i], expectedList[i]);
+                }
+            }
+        }
+
         private static void AssertListsAreEquals(PropertyInfo property, IList actualList, IList expectedList)
         {
             if (actualList.Count != expectedList.Count)
             {
                 Assert.Fail(
                     $"Property {property.PropertyType.Name}.{property.Name} does not match. Expected IList containing {expectedList.Count} elements but was IList containing {actualList.Count} elements");
-
+            }
+            else
+            { 
                 for (int i = 0; i < actualList.Count; i++)
                 {
                     if (!Equals(actualList[i], expectedList[i]))

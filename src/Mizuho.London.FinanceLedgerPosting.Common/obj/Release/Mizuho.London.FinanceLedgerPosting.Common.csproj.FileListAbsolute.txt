@@ -1,0 +1,8 @@
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\bin\Release\Mizuho.London.FinanceLedgerPosting.Common.dll.config
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\bin\Release\Mizuho.London.FinanceLedgerPosting.Common.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\bin\Release\Mizuho.London.FinanceLedgerPosting.Common.pdb
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\bin\Release\Mizuho.London.Common.Interfaces.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Release\Mizuho.London.FinanceLedgerPosting.Common.csproj.CoreCompileInputs.cache
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Release\Mizuho.London.FinanceLedgerPosting.Common.csproj.CopyComplete
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Release\Mizuho.London.FinanceLedgerPosting.Common.dll
+C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Common\obj\Release\Mizuho.London.FinanceLedgerPosting.Common.pdb

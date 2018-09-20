@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mizuho.London.FinanceLedgerPosting.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants">
+            <summary>
+            This is the class to store all common objects
+            </summary>
+        </member>
+        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles">
+            <summary>
+            This stores all the roles available for the application
+            </summary>
+        </member>
+        <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.ReadOnly">
+            <summary>Read only Access</summary>
+        </member>
+        <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.Submitter">
+            <summary>Submitted Access</summary>
+        </member>
+        <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.Approver">
+            <summary>Approver Access</summary> 
+        </member>
+        <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.AnyRoleExceptReadOnly">
+            <summary>Any Access Level apart from read only</summary>
+        </member>
+        <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.Any">
+            <summary>Any Access Level</summary>
+        </member>
+        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController">
+            <summary>
+            All about Suspense Accounts
+            </summary>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.#ctor(Mizuho.London.FinanceLedgerPosting.Repository.Repositories.ISuspenseAccountRepository,Mizuho.London.FinanceLedgerPosting.Repository.Interfaces.IUnitOfWork)">
+            <summary>
+            This is the contructor of the Suspense account object
+            </summary>
+            <param name="suspenseAccountRepository">Suspense Account repository</param>
+            <param name="unitOfWork">Unit of Work</param>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.Get(System.Int32)">
+            <summary>
+            Gets suspense account by id
+            </summary>
+            <param name="id">Suspense account Id</param>
+            <returns>Suspense Account Object</returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.GetPagedList(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            This returns paged list of suspense accounts
+            </summary>
+            <param name="branch">branch to search for</param>
+            <param name="currency">Currency to search for</param>
+            <param name="pageNumber">page number. by default it is set to 1</param>
+            <param name="pageSize">page size. by default it is set to 20</param>
+            <returns>a paged list of suspense account objects</returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.CreateSuspenseAccount(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            This creates a new record of Suspense Account
+            </summary>
+            <param name="jsonBody">suspense Account details</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

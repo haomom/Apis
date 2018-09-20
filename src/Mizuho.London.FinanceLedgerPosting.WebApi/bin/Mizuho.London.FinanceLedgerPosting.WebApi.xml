@@ -29,25 +29,20 @@
         <member name="F:Mizuho.London.FinanceLedgerPosting.WebApi.Common.Constants.UserRoles.Any">
             <summary>Any Access Level</summary>
         </member>
-        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController">
+        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController">
             <summary>
-            All about Suspence Accounts
+            All about Suspense Accounts
             </summary>
         </member>
-        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController.#ctor(Mizuho.London.FinanceLedgerPosting.Repository.Repositories.ISuspenseAccountRepository)">
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.#ctor(Mizuho.London.FinanceLedgerPosting.Repository.Repositories.ISuspenseAccountRepository,Mizuho.London.FinanceLedgerPosting.Repository.Interfaces.IUnitOfWork,Mizuho.London.Common.Logging.IMizLog)">
             <summary>
             This is the contructor of the Suspense account object
             </summary>
-            <param name="suspenseAccountRepository"></param>
+            <param name="suspenseAccountRepository">Suspense Account repository</param>
+            <param name="unitOfWork">Unit of Work</param>
+            <param name="logger">Miz Log instance</param>
         </member>
-        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController.Get(System.Int32)">
-            <summary>
-            Gets suspense account by id
-            </summary>
-            <param name="id">Suspense account Id</param>
-            <returns>Suspense Account Object</returns>
-        </member>
-        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenceAccountController.GetPagedList(System.String,System.String,System.Int32,System.Int32)">
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.GetPagedList(System.String,System.String,System.Int32,System.Int32)">
             <summary>
             This returns paged list of suspense accounts
             </summary>
@@ -56,6 +51,68 @@
             <param name="pageNumber">page number. by default it is set to 1</param>
             <param name="pageSize">page size. by default it is set to 20</param>
             <returns>a paged list of suspense account objects</returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.Get(System.Int32)">
+            <summary>
+            Gets suspense account by id
+            </summary>
+            <param name="id">Suspense account Id</param>
+            <returns>Suspense Account Object</returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.CreateSuspenseAccount(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            This creates a new record of Suspense Account
+            </summary>
+            <param name="jsonBody">suspense Account details</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.RemoveSuspenseAccount(System.Int32)">
+            <summary>
+            This removes a suspense account record
+            </summary>
+            <param name="id">Suspense account id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.SuspenseAccountController.UpdateSuspenseAccount(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            This updates an existing suspense account details
+            </summary>
+            <param name="jsonBody">suspense account details to update</param>
+            <returns></returns>
+        </member>
+        <member name="T:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.UserController">
+            <summary>
+            All about user
+            </summary>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.UserController.#ctor(Mizuho.London.FinanceLedgerPosting.Services.IUserCredentialService)">
+            <summary>
+            This is the contructor for UserController
+            </summary>
+            <param name="userCredentialService"></param>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.UserController.GetPagedList(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            This returns paged list of all GBase credentials stored in redis
+            </summary>
+            <param name="branch">Application Branch</param>
+            <param name="userName">User name</param>
+            <param name="pageNumber">current page numer</param>
+            <param name="pageSize">page size</param>
+            <returns>A paged list of all user credentials</returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.UserController.Get(System.String)">
+            <summary>
+            This returns the current user's G Base credential stored in redis for a given branch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mizuho.London.FinanceLedgerPosting.WebApi.Controllers.UserController.CreateUserCredential(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            This create GBase user credential in Redis
+            </summary>
+            <param name="jsonBody">User credential model in json</param>
+            <returns></returns>
         </member>
     </members>
 </doc>
