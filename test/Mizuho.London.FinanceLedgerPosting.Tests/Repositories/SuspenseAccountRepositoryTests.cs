@@ -23,6 +23,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Repositories
         private Mock<SuspenseAccount> _mockSuspenseAccount;
         private Mock<FinanceLedgerPostingDbContext> _mockDbContext;
         private Mock<DbSet<SuspenseAccount>> _mockDbSet;
+        private Mock<DbSet<SuspenseAccount>> _dbSetMock;
         private DbSet<SuspenseAccount> _dbSet;
 
         private List<SuspenseAccount> _sourceList;
@@ -37,7 +38,8 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Repositories
             _mockSuspenseAccount = new Mock<SuspenseAccount>();
             _mockDbContext = new Mock<FinanceLedgerPostingDbContext>();
             _mockDbSet = new Mock<DbSet<SuspenseAccount>>();
-            _dbSet = MockDBHelper.GetQueryableMockDbSet(_sourceList, (o => o.SuspenseAccountId));
+            _dbSetMock = MockDBHelper.GetQueryableMockDbSet(_sourceList, (o => o.SuspenseAccountId));
+            _dbSet = _dbSetMock.Object;
 
             _suspenseAccount = SuspenceAccountsStubs.GetNewSuspenseAccount();
             _existingSuspenseAccount = SuspenceAccountsStubs.GetExistingSuspenseAccount();

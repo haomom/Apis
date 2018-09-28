@@ -86,5 +86,18 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 AccountNoPart2 = "yyy"
             };
         }
+
+        public static SuspenseAccount GetInvalidSuspenseAccount()
+        {
+            return new SuspenseAccount
+            {
+                SuspenseAccountId = 1,
+                Branch = "LDN",
+                Currency = "EUR",
+                AccountCode = "",
+                AccountNoPart1 = "",
+                AccountNoPart2 = "yyy"
+            };
+        }
     }
 }

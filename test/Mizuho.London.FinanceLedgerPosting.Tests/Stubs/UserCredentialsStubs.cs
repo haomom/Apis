@@ -15,6 +15,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
             {
                 new UserCredential()
                 {
+                    UserCredentialId = 1,
                     Branch = "London",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "1",
@@ -24,6 +25,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 2,
                     Branch = "Milan",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "2",
@@ -33,6 +35,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 3,
                     Branch = "London",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "3",
@@ -42,6 +45,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 4,
                     Branch = "Milan",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "4",
@@ -51,6 +55,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 5,
                     Branch = "London",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "5",
@@ -60,6 +65,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 6,
                     Branch = "Milan",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "6",
@@ -69,6 +75,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 7,
                     Branch = "London",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "7",
@@ -78,6 +85,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 8,
                     Branch = "Milan",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "8",
@@ -86,6 +94,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                     UserName = "username8"
                 },new UserCredential()
                 {
+                    UserCredentialId = 9,
                     Branch = "London",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "9",
@@ -95,6 +104,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
                 },
                 new UserCredential()
                 {
+                    UserCredentialId = 10,
                     Branch = "Milan",
                     ExpiryDate = DateTime.Today.Date,
                     GBaseEmployeeId = "10",
@@ -109,12 +119,40 @@ namespace Mizuho.London.FinanceLedgerPosting.Tests.Stubs
         {
             return new UserCredential()
             {
+                UserCredentialId = 1,
                 Branch = "London",
                 ExpiryDate = DateTime.Today.Date,
                 GBaseEmployeeId = "1",
                 GBaseUserId = "xdf",
                 GBasePassword = "password",
                 UserName = "username1"
+            };
+        }
+
+        public static UserCredential GetInvalidUserCredential()
+        {
+            return new UserCredential()
+            {
+                UserCredentialId = 1,
+                Branch = "London",
+                ExpiryDate = DateTime.Today.Date,
+                GBaseEmployeeId = "1",
+                GBaseUserId = "",
+                GBasePassword = "",
+                UserName = "username1"
+            };
+        }
+
+        public static UserCredential GetNewUserCredential()
+        {
+            return new UserCredential()
+            {
+                Branch = "London",
+                ExpiryDate = DateTime.Today.Date,
+                GBaseEmployeeId = "1",
+                GBaseUserId = "sds",
+                GBasePassword = "dsdsd",
+                UserName = "newusername"
             };
         }
     }
