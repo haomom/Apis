@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+
+  <configSections xdt:Transform="InsertIfMissing">
+  </configSections>
+
+  <configSections>
+    <section name="MizCacheConfig" type="Mizuho.London.Common.Cache.MizCacheConfigHandler, Mizuho.London.Common.Cache" xdt:Transform="Remove" xdt:Locator="Match(name)" />
+    <section name="MizCacheConfig" type="Mizuho.London.Common.Cache.MizCacheConfigHandler, Mizuho.London.Common.Cache" xdt:Transform="Insert" />
+  </configSections>
+
+  <MizCacheConfig xdt:Transform="InsertIfMissing">
+    <Connection Server="V-RDSSVC01D" Port="6379" Password="R3d1sD3v" />
+    <Key ApplicationIdentifier="{GUID}" />
+  </MizCacheConfig>
+
+</configuration>
