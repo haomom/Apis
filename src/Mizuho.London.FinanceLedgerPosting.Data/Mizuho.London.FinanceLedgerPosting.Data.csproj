@@ -47,11 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Branch.cs" />
+    <Compile Include="Entities\IBranch.cs" />
     <Compile Include="Entities\ISuspenseAccount.cs" />
     <Compile Include="Entities\IUserCredential.cs" />
     <Compile Include="Entities\UserCredential.cs" />
     <Compile Include="Extensions\TypeConfigurationExtensions.cs" />
+    <Compile Include="Map\BranchMapping.cs" />
     <Compile Include="Map\SuspenseAccountMapping.cs" />
+    <Compile Include="Map\UserCredentialMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\SuspenseAccount.cs" />
   </ItemGroup>

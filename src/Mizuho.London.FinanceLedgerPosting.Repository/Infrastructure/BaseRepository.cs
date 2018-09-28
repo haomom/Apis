@@ -18,7 +18,7 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
 
         protected BaseRepository(IUnitOfWork unitOfWork)
         {
-            UnitOfWork = unitOfWork ?? throw new ArgumentNullException("UnitOfWork is null");
+            UnitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _dbSet = DataContext.Set<T>();
         }
 
@@ -50,6 +50,11 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
         public IQueryable<T> GetAll()
         {
             return _dbSet;
+        }
+
+        public async Task<IEnumerable<T>> GetAllEntities()
+        {
+            return await _dbSet.ToListAsync();
         }
 
         public IRepositoryQuery<T> Query()

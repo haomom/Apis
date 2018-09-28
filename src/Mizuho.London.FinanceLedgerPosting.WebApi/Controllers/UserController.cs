@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Mizuho.London.FinanceLedgerPosting.Data.Entities;
+﻿using Mizuho.London.FinanceLedgerPosting.Data.Entities;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
 using Mizuho.London.FinanceLedgerPosting.Services;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Http;
+using AutoMapper;
+using Mizuho.London.Common.RoleProviders;
+using Mizuho.London.FinanceLedgerPosting.ModelDTO;
 
 namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
 {
@@ -23,7 +24,7 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
         /// This is the contructor for UserController
         /// </summary>
         /// <param name="userCredentialService"></param>
-        public UserController(IUserCredentialService userCredentialService)
+        public UserController(IUserCredentialService userCredentialService) : base()
         {
             _userCredentialService = userCredentialService;
         }
@@ -60,21 +61,31 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
                     $"There is no GBase credential for current user for {branch} branch.");
             }
 
-            return Content(HttpStatusCode.Found, userCredential);
+            UserCredentialDTO returnObject = Mapper.Map<UserCredential, UserCredentialDTO>((UserCredential)userCredential);
+
+            return Content(HttpStatusCode.Found, returnObject);
         }
 
         /// <summary>
         /// This create GBase user credential in Redis
         /// </summary>
-        /// <param name="jsonBody">User credential model in json</param>
+        /// <param name="userCredential">User credential DTO model</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("api/UserCredentials/CreateUserCredential")]
-        public async Task<IHttpActionResult> CreateUserCredential([FromBody] JToken jsonBody)
+        [Route("api/UserCredentials/UserCredential/Create")]
+        [MizuhoAuthorizeWebApi(Roles = Common.Constants.UserRoles.AnyRoleExceptReadOnly)]
+        public async Task<IHttpActionResult> CreateUserCredential([FromBody] UserCredentialDTO userCredential)
         {
+            if (!ModelState.IsValid)
+            {
+                return Content(HttpStatusCode.BadRequest, "Input not in correct format");
+            }
+
             try
             {
-                string resultMessage = await _userCredentialService.CreateUserCredential(jsonBody);
+                userCredential.UserName = User.Identity.Name;
+
+                string resultMessage = await _userCredentialService.CreateUserCredential(userCredential);
 
                 if (!string.IsNullOrEmpty(resultMessage))
                 {
@@ -87,6 +98,94 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
             }
 
             return Content(HttpStatusCode.Created, "GBase credential stored successfully");
+        }
+
+        /// <summary>
+        /// This removes GBase credential for current user for the given branch
+        /// </summary>
+        /// <param name="branch">branch</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/UserCredentials/UserCredential/Remove/{branch}")]
+        [MizuhoAuthorizeWebApi(Roles = Common.Constants.UserRoles.AnyRoleExceptReadOnly)]
+        public async Task<IHttpActionResult> RemoveUserCredential(string branch)
+        {
+            if (string.IsNullOrEmpty(branch))
+            {
+                return Content(HttpStatusCode.BadRequest, "Branch parameter is missing.");
+            }
+
+            try
+            {
+                string resultMessage = await _userCredentialService.RemoveUserCredential(User.Identity.Name, branch);
+
+                if (!string.IsNullOrEmpty(resultMessage))
+                {
+                    return Content(HttpStatusCode.BadRequest, resultMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Ok("GBase credential removed successfully");
+        }
+
+        /// <summary>
+        /// This updates GBase credential for current user for given branch
+        /// </summary>
+        /// <param name="userCredential">User credential DTO model</param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("api/UserCredentials/UserCredential/Update")]
+        [MizuhoAuthorizeWebApi(Roles = Common.Constants.UserRoles.AnyRoleExceptReadOnly)]
+        public async Task<IHttpActionResult> UpdateUserCredential([FromBody] UserCredentialDTO userCredential)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Content(HttpStatusCode.BadRequest, "Input not in correct format");
+            }
+
+            try
+            {
+                var resultMessage = await _userCredentialService.UpdateUserCredential(userCredential);
+
+                if (!string.IsNullOrEmpty(resultMessage))
+                {
+                    return Content(HttpStatusCode.BadRequest, resultMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Ok("GBase credential is updated successfully");
+        }
+
+        /// <summary>
+        /// This triggers test of stored GBase credential in redis for the user
+        /// </summary>
+        /// <param name="userName">User name</param>
+        /// <param name="branch">Branch</param>
+        /// <returns></returns>
+        [Route("api/UserCredentials/UserCredential/Test/{userName}/{branch}")]
+        public async Task<IHttpActionResult> TestGBaseCredential(string userName, string branch)
+        {
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(branch))
+            {
+                return Content(HttpStatusCode.BadRequest, "One or more input parameters are missing.");
+            }
+
+            var resultMessage = await _userCredentialService.TestGBaseCredential(userName, branch);
+
+            if (!string.IsNullOrEmpty(resultMessage))
+            {
+                return Content(HttpStatusCode.BadRequest, resultMessage);
+            }
+
+            return Ok();
         }
     }
 }

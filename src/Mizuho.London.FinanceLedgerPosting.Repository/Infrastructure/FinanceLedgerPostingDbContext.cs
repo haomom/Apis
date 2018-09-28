@@ -10,7 +10,8 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
         #region DbSet
        
         public virtual IDbSet<SuspenseAccount> SuspenseAccounts { get; set; }
-       
+        public virtual IDbSet<UserCredential> UserCredentials { get; set; }
+        public virtual IDbSet<Branch> Branches { get; set; }
         #endregion
 
         public FinanceLedgerPostingDbContext()
@@ -30,6 +31,9 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new SuspenseAccountMapping());
+            modelBuilder.Configurations.Add(new UserCredentialMapping());
+            modelBuilder.Configurations.Add(new BranchMapping());
+
             base.OnModelCreating(modelBuilder);
         }
     }

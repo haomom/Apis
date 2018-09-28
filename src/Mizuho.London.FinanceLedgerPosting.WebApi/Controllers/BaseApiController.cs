@@ -11,5 +11,9 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi.Controllers
 {
     public class BaseApiController : ApiController
     {
+        public BaseApiController()
+        {
+            Thread.CurrentPrincipal = User;
+        }
     }
 }

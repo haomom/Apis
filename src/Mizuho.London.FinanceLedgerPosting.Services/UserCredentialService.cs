@@ -1,56 +1,143 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Mizuho.London.Common.Logging;
+﻿using Mizuho.London.Common.Logging;
 using Mizuho.London.FinanceLedgerPosting.Common.Extensions;
 using Mizuho.London.FinanceLedgerPosting.Data.Entities;
 using Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using Mizuho.London.FinanceLedgerPosting.ModelDTO;
+using Mizuho.London.FinanceLedgerPosting.Repository.Repositories;
+using UserCredential = Mizuho.London.FinanceLedgerPosting.Data.Entities.UserCredential;
 
 namespace Mizuho.London.FinanceLedgerPosting.Services
 {
     public class UserCredentialService : IUserCredentialService
     {
-        private readonly IUserCredentialsSource _userCredentialsSource;
+        private readonly IUserCredentialRepository _userCredentialRepository;
         private readonly IMizLog _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UserCredentialService(IUserCredentialsSource userCredentialsSource, IMizLog logger)
+        public UserCredentialService(IUserCredentialRepository userCredentialRepository, IMizLog logger, IUnitOfWork unitOfWork)
         {
-            _userCredentialsSource = userCredentialsSource;
+            _userCredentialRepository = userCredentialRepository;
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
-        //TODO: Add sorting
+        //TODO: sorting
         public async Task<IPagedResult<UserCredential>> GetPageUserCredentials(string branch, string userName, int pageNumber, int pageSize)
         {
-            if (pageNumber < 1 || pageSize < 1)
-                return new PagedResult<UserCredential>(Enumerable.Empty<UserCredential>(), 0, pageNumber, pageSize);
+            var query = _userCredentialRepository.Query();
 
-            IList<UserCredential> source = await _userCredentialsSource.GetUserCredentials();
+            Expression<Func<UserCredential, bool>> filterExpressionTree = null;
 
-            if (source == null || source.Count < 1)
-                return new PagedResult<UserCredential>(Enumerable.Empty<UserCredential>(), 0, pageNumber, pageSize);
+            if (!string.IsNullOrEmpty(branch))
+            {
+                filterExpressionTree = filterExpressionTree.And(x => x.Branch.Contains(branch));
+            }
 
-            var result = GetPagedList(branch, userName, pageNumber, pageSize, source);
+            if (!string.IsNullOrEmpty(userName))
+            {
+                filterExpressionTree = filterExpressionTree.And(x => x.UserName == userName);
+            }
 
-            return new PagedResult<UserCredential>(result.Item1, result.Item2, pageNumber, pageSize);
+            if (filterExpressionTree != null)
+            {
+                query.Filter(filterExpressionTree);
+            }
+
+            query.OrderBy(x => x.OrderBy(xx => xx.UserName).ThenBy(xx => xx.Branch));
+
+            return await query.GetPage(pageNumber, pageSize);
         }
 
         public async Task<IUserCredential> GetUserCredentialForaBranch(string userName, string branch)
         {
-            IList<UserCredential> source = await _userCredentialsSource.GetUserCredentials();
-
-            return source?.FirstOrDefault(x => x.UserName == userName && x.Branch == branch);
+            return await _userCredentialRepository
+                                    .Query()
+                                    .Filter(x => x.UserName == userName && x.Branch == branch)
+                                    .GetFirstOrDefault();
         }
 
-        public Task<string> CreateUserCredential(JToken newUserCredential)
+        public async Task<string> CreateUserCredential(UserCredentialDTO newUserCredential)
         {
-            throw new NotImplementedException();
+            var validationResult = await ValidateUserCredentialModel(newUserCredential, "create");
+
+            if (!string.IsNullOrEmpty(validationResult.Item2))
+            {
+                return validationResult.Item2;
+            }
+
+            var userCredential = Mapper.Map<UserCredentialDTO, UserCredential>(newUserCredential);
+            userCredential.LastModifiedOn = DateTime.Now;
+            userCredential.CreatedOn = DateTime.Now;
+            userCredential.ModifiedBy = Thread.CurrentPrincipal.Identity.Name;
+
+            UserCredential newRecord = _userCredentialRepository.Add(userCredential);
+            _unitOfWork.Commit();
+            
+            return (newRecord != null)
+                ? string.Empty
+                : $"Error while adding GBase credential for {newUserCredential.UserName} for {newUserCredential.Branch} branch";
+        }
+
+        public async Task<string> RemoveUserCredential(string userName, string branch)
+        {
+            var existingRecord = await _userCredentialRepository.Query().Filter(x => x.UserName == userName && x.Branch == branch).GetFirstOrDefault();
+            
+            if (existingRecord == null)
+            {
+                return $"GBase credential record with for user {userName} and {branch} branch does not exists";
+            }
+
+            _userCredentialRepository.Remove(existingRecord);
+            _unitOfWork.Commit();
+
+            return string.Empty;
+        }
+
+        public async Task<string> UpdateUserCredential(UserCredentialDTO updatedUserCredential)
+        {
+            var validateResult = await ValidateUserCredentialModel(updatedUserCredential, "update");
+
+            if (!string.IsNullOrEmpty(validateResult.Item2))
+            {
+                return validateResult.Item2;
+            }
+
+            UserCredential existingUserCredential = validateResult.Item1;
+            Mapper.Map<UserCredentialDTO, UserCredential>(updatedUserCredential, existingUserCredential);
+
+            existingUserCredential.LastModifiedOn = DateTime.Now;
+            existingUserCredential.ModifiedBy = Thread.CurrentPrincipal.Identity.Name;
+
+            _userCredentialRepository.Update(existingUserCredential);
+            _userCredentialRepository.SetEntityStateModified(existingUserCredential);
+            _unitOfWork.Commit();
+
+            return string.Empty;
+        }
+
+        public async Task<string> TestGBaseCredential(string userName, string branch)
+        {
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(branch))
+            {
+                return $"User name and/or branch parameters are missing.";
+            }
+
+            UserCredential existingRecord = await _userCredentialRepository.Query().Filter(x => x.UserName == userName && x.Branch == branch).GetFirstOrDefault();
+
+            if (existingRecord == null)
+            {
+                return $"GBase credential record with for user {userName} and {branch} branch does not exists";
+            }
+
+            return string.Empty;
         }
 
         private Tuple<IEnumerable<UserCredential>, int> GetPagedList(string branch, string userName, int pageNumber, int pageSize, IList<UserCredential> source)
@@ -92,64 +179,56 @@ namespace Mizuho.London.FinanceLedgerPosting.Services
             return new Tuple<IEnumerable<UserCredential>, int>(list, total);
         }
 
-        private async Task<Tuple<UserCredential, string>> ValidateuserCredentialModel(JToken jsonBody)
+        private async Task<Tuple<UserCredential, string>> ValidateUserCredentialModel(
+            UserCredentialDTO userCredentialModel, string action)
         {
-            UserCredential userCredentialModel = null;
-            string message = string.Empty;
-
-            try
+            if (userCredentialModel == null)
             {
-                userCredentialModel = JsonConvert.DeserializeObject<UserCredential>(jsonBody.ToString());
-            }
-            catch (Exception e)
-            {
-                _logger.Error($"Invalid user credential model. Model: {jsonBody.ToString()} ", e);
-                message = "Invalid UserCredential model";
-                return Tuple.Create(userCredentialModel, message);
+                return new Tuple<UserCredential, string>(null, "Invalid UserCredential Model.");
             }
 
-            bool isValid = true;
-
-            if (userCredentialModel == null || string.IsNullOrEmpty(userCredentialModel.Branch)
-                                        || string.IsNullOrEmpty(userCredentialModel.GBaseEmployeeId)
-                                        || string.IsNullOrEmpty(userCredentialModel.GBaseUserId)
-                                        || string.IsNullOrEmpty(userCredentialModel.GBasePassword))
+            if (!(!string.IsNullOrEmpty(userCredentialModel.Branch)
+                  && !string.IsNullOrEmpty(userCredentialModel.GBaseEmployeeId)
+                  && !string.IsNullOrEmpty(userCredentialModel.GBaseUserId)
+                  && !string.IsNullOrEmpty(userCredentialModel.GBasePassword)
+                  && !string.IsNullOrEmpty(userCredentialModel.UserName)
+                  && userCredentialModel.ExpiryDate != DateTime.MinValue))
             {
-                message = "Invalid UserCredential Model. One of more required fields are missing.";
-                _logger.Error($"Invalid user credential model. Model: {jsonBody.ToString()} ");
-                isValid = false;
+                return new Tuple<UserCredential, string>(null,
+                    "Invalid UserCredential Model. One of more required fields are missing.");
             }
 
-            /*if (isValid)
+            if (string.IsNullOrEmpty(action))
             {
-                IList<UserCredential> source = await _userCredentialsSource.GetUserCredentials();
+                return new Tuple<UserCredential, string>(null, string.Empty);
+            }
 
-                var existingModel = source.FirstOrDefault(Ide);
+            var existingRecord = await _userCredentialRepository.Query().Filter(x =>
+                    x.UserName == userCredentialModel.UserName && x.Branch == userCredentialModel.Branch)
+                .GetFirstOrDefault();
 
-                if (existingModel == null)
+            if (action == "create")
+            {
+                if (existingRecord != null)
                 {
-                    message = $"Suspense account with id {userCredentialModel.SuspenseAccountId} does not exists";
-                    isValid = false;
+                    return new Tuple<UserCredential, string>(null,
+                        "GBase user credential record already exists for the current user and branch");
+                }
+            }
+            else if (action == "update")
+            {
+                if (existingRecord == null)
+                {
+                    return new Tuple<UserCredential, string>(null,
+                        "GBase user credential record does not exists for the current user and branch");
                 }
                 else
                 {
-                    var duplicateModel = await
-                        _suspenseAccountRepository.FindSuspenseAccountByBranchCurrency(userCredentialModel.Branch,
-                            suspenseAccountModel.Currency);
-
-                    if (duplicateModel != null &&
-                        duplicateModel.SuspenseAccountId != userCredentialModel.SuspenseAccountId)
-                    {
-                        message = "There is another suspense account record with same branch and currency";
-                        isValid = false;
-                    }
+                    return new Tuple<UserCredential, string>(existingRecord, string.Empty);
                 }
-            }*/
-
-            if (!isValid)
-                userCredentialModel = null;
-
-            return Tuple.Create(userCredentialModel, message);
+            }
+            
+            return new Tuple<UserCredential, string>(null, string.Empty);
         }
     }
 
@@ -159,6 +238,12 @@ namespace Mizuho.London.FinanceLedgerPosting.Services
 
         Task<IUserCredential> GetUserCredentialForaBranch(string userName, string branch);
 
-        Task<string> CreateUserCredential(JToken newUserCredential);
+        Task<string> CreateUserCredential(UserCredentialDTO newUserCredential);
+
+        Task<string> RemoveUserCredential(string userName, string branch);
+
+        Task<string> UpdateUserCredential(UserCredentialDTO newUserCredential);
+
+        Task<string> TestGBaseCredential(string userName, string branch);
     }
 }

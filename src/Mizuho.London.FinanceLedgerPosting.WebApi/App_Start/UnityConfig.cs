@@ -1,14 +1,13 @@
+using Mizuho.London.Common.Logging;
 using Mizuho.London.FinanceLedgerPosting.Data.Entities;
 using Mizuho.London.FinanceLedgerPosting.Repository.Infrastructure;
 using Mizuho.London.FinanceLedgerPosting.Repository.Interfaces;
 using Mizuho.London.FinanceLedgerPosting.Repository.Repositories;
-using System.Web.Http;
-using Mizuho.London.Common.Interfaces.Logging;
-using Mizuho.London.Common.Logging;
 using Mizuho.London.FinanceLedgerPosting.Services;
-using Unity.WebApi;
+using System.Web.Http;
 using Unity;
 using Unity.Lifetime;
+using Unity.WebApi;
 
 namespace Mizuho.London.FinanceLedgerPosting.WebApi
 {
@@ -29,21 +28,25 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             container.RegisterType<IMizLog, MizLog>();
             container.RegisterType<IMizLogConfigHandler, MizLogConfigHandler>();
 
-            container.RegisterType<IUnitOfWork, FinanceLedgerPostingDbContext>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<IUnitOfWork, FinanceLedgerPostingDbContext>(new HierarchicalLifetimeManager());
+            
             #region Model
             container.RegisterType<ISuspenseAccount, SuspenseAccount>();
             container.RegisterType<IUserCredential, UserCredential>();
+            container.RegisterType<IBranch, Branch>();
             #endregion
 
             #region Services
             container.RegisterType<IUserCredentialService, UserCredentialService>();
-            container.RegisterType<IUserCredentialsSource, UserCredentialsSource>();
+            container.RegisterType<IBranchService, BranchService>();
             #endregion
 
             #region Repository
 
             container.RegisterType<ISuspenseAccountRepository, SuspenseAccountRepository>();
+            container.RegisterType<IUserCredentialRepository, UserCredentialRepository>();
+            container.RegisterType<IBranchRepository, BranchRepository>();
 
             #endregion
 

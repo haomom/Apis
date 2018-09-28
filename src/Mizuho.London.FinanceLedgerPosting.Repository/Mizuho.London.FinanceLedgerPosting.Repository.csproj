@@ -71,7 +71,9 @@
     <Compile Include="Interfaces\IRepositoryQuery.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BranchRepository.cs" />
     <Compile Include="Repositories\SuspenseAccountRepository.cs" />
+    <Compile Include="Repositories\UserCredentialRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

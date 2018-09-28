@@ -1,6 +1,7 @@
-﻿using System.Web.Http;
+﻿using Mizuho.London.FinanceLedgerPosting.WebApi.Filter;
+using System.Web.Http;
 using System.Web.Http.Cors;
-using Mizuho.London.FinanceLedgerPosting.WebApi.Filter;
+using Mizuho.London.Common.RoleProviders;
 
 namespace Mizuho.London.FinanceLedgerPosting.WebApi
 {
@@ -11,7 +12,6 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             // Web API configuration and services
 
             // Web Api enable CORS
-            var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors();
 
             // Web API routes
@@ -26,7 +26,7 @@ namespace Mizuho.London.FinanceLedgerPosting.WebApi
             // Ignore Items in circular reference
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
-            config.Filters.Add(new AuthorizeAttribute());
+            config.Filters.Add(new MizuhoAuthorizeWebApi());
             config.Filters.Add(new AppExceptionFilterAttribute());
         }
     }

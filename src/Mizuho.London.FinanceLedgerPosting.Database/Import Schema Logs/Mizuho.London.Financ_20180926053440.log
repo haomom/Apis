@@ -1,0 +1,76 @@
+26/09/2018 18:34:40	This log contains information about the import schema operation into project 'Mizuho.London.FinanceLedgerPosting.Database' on computer 'LM018154W7' by user 'HAOMGI'.
+26/09/2018 18:34:40	Import of database schema has started.
+26/09/2018 18:34:48	Gathering database options
+26/09/2018 18:34:48	Gathering users
+26/09/2018 18:34:48	Gathering roles
+26/09/2018 18:34:48	Gathering application roles
+26/09/2018 18:34:48	Gathering role memberships
+26/09/2018 18:34:48	Gathering filegroups
+26/09/2018 18:34:48	Gathering full-text catalogs
+26/09/2018 18:34:48	Gathering assemblies
+26/09/2018 18:34:48	Gathering certificates
+26/09/2018 18:34:48	Gathering asymmetric keys
+26/09/2018 18:34:48	Gathering symmetric keys
+26/09/2018 18:34:48	Gathering encrypted symmetric keys
+26/09/2018 18:34:48	Gathering schemas
+26/09/2018 18:34:48	Gathering XML schema collections
+26/09/2018 18:34:48	Gathering user-defined data types
+26/09/2018 18:34:48	Gathering user-defined types
+26/09/2018 18:34:48	Gathering table types
+26/09/2018 18:34:48	Gathering unique keys for table types
+26/09/2018 18:34:48	Gathering primary keys for table types
+26/09/2018 18:34:48	Gathering check constraints for table types
+26/09/2018 18:34:48	Gathering default constraints for table types
+26/09/2018 18:34:48	Gathering partition functions
+26/09/2018 18:34:48	Gathering partition schemes
+26/09/2018 18:34:48	Gathering functions
+26/09/2018 18:34:48	Gathering encrypted functions
+26/09/2018 18:34:48	Gathering aggregates
+26/09/2018 18:34:48	Gathering procedures
+26/09/2018 18:34:48	Gathering encrypted procedures
+26/09/2018 18:34:48	Gathering tables
+26/09/2018 18:34:48	Gathering primary keys
+26/09/2018 18:34:48	Gathering unique constraints
+26/09/2018 18:34:48	Gathering foreign keys
+26/09/2018 18:34:48	Gathering default constraints
+26/09/2018 18:34:48	Gathering check constraints
+26/09/2018 18:34:48	Gathering views
+26/09/2018 18:34:48	Gathering encrypted views
+26/09/2018 18:34:48	Gathering indexes
+26/09/2018 18:34:48	Gathering statistics
+26/09/2018 18:34:48	Gathering full-text index stoplists
+26/09/2018 18:34:48	Gathering search property lists
+26/09/2018 18:34:48	Gathering search properties
+26/09/2018 18:34:48	Gathering full-text indexes
+26/09/2018 18:34:48	Gathering column store indexes
+26/09/2018 18:34:48	Gathering spatial indexes
+26/09/2018 18:34:48	Gathering XML indexes
+26/09/2018 18:34:48	Gathering Selective XML indexes
+26/09/2018 18:34:48	Gathering encrypted triggers
+26/09/2018 18:34:48	Gathering triggers
+26/09/2018 18:34:48	Gathering encrypted and clr ddl triggers
+26/09/2018 18:34:48	Gathering ddl triggers
+26/09/2018 18:34:48	Gathering synonyms
+26/09/2018 18:34:48	Gathering defaults
+26/09/2018 18:34:48	Gathering data constraint uddt bindings
+26/09/2018 18:34:48	Gathering rules
+26/09/2018 18:34:48	Gathering data constraint uddt bindings
+26/09/2018 18:34:48	Gathering message types
+26/09/2018 18:34:48	Gathering queues
+26/09/2018 18:34:48	Gathering contracts
+26/09/2018 18:34:48	Gathering services
+26/09/2018 18:34:48	Gathering event notifications
+26/09/2018 18:34:48	Gathering remote service bindings
+26/09/2018 18:34:48	Gathering broker priorities
+26/09/2018 18:34:48	Gathering signatures
+26/09/2018 18:34:48	Gathering data compression options
+26/09/2018 18:34:48	Gathering sequence types
+26/09/2018 18:34:48	Gathering extended properties
+26/09/2018 18:34:48	Gathering credentials
+26/09/2018 18:34:48	Gathering logins
+26/09/2018 18:34:48	Gathering server audits
+26/09/2018 18:34:49	Scanning project for duplicate elements
+26/09/2018 18:34:49	Finished duplicate element processing
+26/09/2018 18:34:50	Finished importing database.
+26/09/2018 18:34:50	A summary of the import was saved to the following location: C:\Code\FinanceLedgerPosting\Application\App-Dev\FinanceLedgerPosting.Apis\src\Mizuho.London.FinanceLedgerPosting.Database\Import Schema Logs\Mizuho.London.Financ_20180926053440.log
+26/09/2018 18:34:50	Click Finish to continue...

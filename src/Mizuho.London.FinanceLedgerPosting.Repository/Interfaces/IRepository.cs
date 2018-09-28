@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Mizuho.London.FinanceLedgerPosting.Repository.Interfaces
@@ -12,5 +13,6 @@ namespace Mizuho.London.FinanceLedgerPosting.Repository.Interfaces
         Task<T> GetById(object id);
         IQueryable<T> GetAll();
         IRepositoryQuery<T> Query();
+        Task<IEnumerable<T>> GetAllEntities();
     }
 }
